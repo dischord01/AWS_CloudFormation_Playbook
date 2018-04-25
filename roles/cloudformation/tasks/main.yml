@@ -15,12 +15,13 @@
       stack_name: "ansible-cloudformation-demo-01"
       state: present
       region: us-east-1
-      template_body: "{{ lookup('template', 'single-instance-in-vpc.template.j2') }}"
-      template_parameters:
-        KeyName: workshop_key_1
-        DiskType: ephemeral
-        InstanceType: t2.small
-        Region2Examples: us-east-1
-        SSHLocation: "0.0.0.0/0"
+      template: "file/vpc.yml"
+      # template_body: "{{ lookup('template', 'single-instance-in-vpc.template.j2') }}"
+      # template_parameters:
+      #   KeyName: workshop_key_1
+      #   DiskType: ephemeral
+      #   InstanceType: t2.small
+      #   Region2Examples: us-east-1
+      #   SSHLocation: "0.0.0.0/0"
       tags:
         Stack: ansible-cloudformation-demo-01
