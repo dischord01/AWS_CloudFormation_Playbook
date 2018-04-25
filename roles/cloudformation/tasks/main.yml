@@ -1,11 +1,11 @@
 # file: roles/cloudformation/tasks/main.yml
 ---
-- name: Get Facts on current CloudFormation templates
-  cloudformation_facts:
-      region: us-east-1
-      all_facts:      true # Get all stack information for the stack
-      stack_template: true # Get stack template body for the stack
-      stack_events:   true # Get stack events for the stack
+# - name: Get Facts on current CloudFormation templates
+#   cloudformation_facts:
+#       region: us-east-1
+#       all_facts:      true # Get all stack information for the stack
+#       stack_template: true # Get stack template body for the stack
+#       stack_events:   true # Get stack events for the stack
       
 
 - name: Deploy CloudFormation template
