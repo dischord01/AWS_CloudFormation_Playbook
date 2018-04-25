@@ -1,1 +1,4 @@
 # file: group_vars/all/all.yml
+
+aws_access_key:                      "{{ vault_aws_access_key }}"
+aws_secret_key:                      "{{ vault_aws_secret_key }}"
