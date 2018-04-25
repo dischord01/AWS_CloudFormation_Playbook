@@ -15,7 +15,7 @@
       stack_name: "ansible-cloudformation-demo-01"
       state: present
       region: us-east-1
-      template: "file/vpc.yml"
+      template: "files/vpc.yml"
       # template_body: "{{ lookup('template', 'single-instance-in-vpc.template.j2') }}"
       # template_parameters:
       #   KeyName: workshop_key_1
