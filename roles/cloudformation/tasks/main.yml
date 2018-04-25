@@ -10,6 +10,8 @@
 
 - name: Deploy CloudFormation template
   cloudformation:
+      aws_access_key: ""
+      aws_secret_key: ""
       stack_name: "ansible-cloudformation-demo-01"
       state: present
       region: us-east-1
