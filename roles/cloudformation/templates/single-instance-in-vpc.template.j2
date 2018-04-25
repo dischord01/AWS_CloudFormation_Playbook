@@ -1,25 +1,19 @@
 {
   "AWSTemplateFormatVersion" : "2010-09-09",
-
   "Description" : "AWS CloudFormation Sample Template VPC_Single_Instance_In_Subnet: Sample template showing how to create a VPC and add an EC2 instance with an Elastic IP address and a security group. **WARNING** This template creates an Amazon EC2 instance. You will be billed for the AWS resources used if you create a stack from this template.",
-
   "Parameters" : {
-
     "InstanceType" : {
       "Description" : "WebServer EC2 instance type",
       "Type" : "String",
       "Default" : "t2.small",
-      "AllowedValues" : [ "t1.micro", "t2.nano", "t2.micro", "t2.small", "t2.medium", "t2.large", "m1.small", "m1.medium", "m1.large", "m1.xlarge", "m2.xlarge", "m2.2xlarge", "m2.4xlarge", "m3.medium", "m3.large", "m3.xlarge", "m3.2xlarge", "m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge", "m4.10xlarge", "c1.medium", "c1.xlarge", "c3.large", "c3.xlarge", "c3.2xlarge", "c3.4xlarge", "c3.8xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge", "g2.2xlarge", "g2.8xlarge", "r3.large", "r3.xlarge", "r3.2xlarge", "r3.4xlarge", "r3.8xlarge", "i2.xlarge", "i2.2xlarge", "i2.4xlarge", "i2.8xlarge", "d2.xlarge", "d2.2xlarge", "d2.4xlarge", "d2.8xlarge", "hi1.4xlarge", "hs1.8xlarge", "cr1.8xlarge", "cc2.8xlarge", "cg1.4xlarge"]
-,
+      "AllowedValues" : [ "t1.micro", "t2.nano", "t2.micro", "t2.small", "t2.medium", "t2.large", "m1.small", "m1.medium", "m1.large", "m1.xlarge", "m2.xlarge", "m2.2xlarge", "m2.4xlarge", "m3.medium", "m3.large", "m3.xlarge", "m3.2xlarge", "m4.large", "m4.xlarge", "m4.2xlarge", "m4.4xlarge", "m4.10xlarge", "c1.medium", "c1.xlarge", "c3.large", "c3.xlarge", "c3.2xlarge", "c3.4xlarge", "c3.8xlarge", "c4.large", "c4.xlarge", "c4.2xlarge", "c4.4xlarge", "c4.8xlarge", "g2.2xlarge", "g2.8xlarge", "r3.large", "r3.xlarge", "r3.2xlarge", "r3.4xlarge", "r3.8xlarge", "i2.xlarge", "i2.2xlarge", "i2.4xlarge", "i2.8xlarge", "d2.xlarge", "d2.2xlarge", "d2.4xlarge", "d2.8xlarge", "hi1.4xlarge", "hs1.8xlarge", "cr1.8xlarge", "cc2.8xlarge", "cg1.4xlarge"],
       "ConstraintDescription" : "must be a valid EC2 instance type."
     },
-
     "KeyName": {
       "Description" : "Name of an existing EC2 KeyPair to enable SSH access to the instance",
       "Type": "AWS::EC2::KeyPair::KeyName",
       "ConstraintDescription" : "must be the name of an existing EC2 KeyPair."
     },
-    
     "SSHLocation" : {
       "Description" : " The IP address range that can be used to SSH to the EC2 instances",
       "Type": "String",
@@ -28,7 +22,6 @@
       "Default": "0.0.0.0/0"
     }
   },
-
   "Mappings" : {
     "Region2Examples" : {
       "us-east-1"      : { "Examples" : "https://s3.amazonaws.com/cloudformation-examples-us-east-1" },
@@ -49,8 +42,7 @@
       "sa-east-1"      : { "Examples" : "https://s3-sa-east-1.amazonaws.com/cloudformation-examples-sa-east-1" },
       "cn-north-1"     : { "Examples" : "https://s3.cn-north-1.amazonaws.com.cn/cloudformation-examples-cn-north-1" },
       "cn-northwest-1" : { "Examples" : "https://s3.cn-northwest-1.amazonaws.com.cn/cloudformation-examples-cn-northwest-1" }
-    }
-,
+    },
     "AWSInstanceType2Arch" : {
       "t1.micro"    : { "Arch" : "PV64"   },
       "t2.nano"     : { "Arch" : "HVM64"  },
@@ -106,7 +98,6 @@
       "cr1.8xlarge" : { "Arch" : "HVM64"  },
       "cc2.8xlarge" : { "Arch" : "HVM64"  }
     },
-
     "AWSInstanceType2NATArch" : {
       "t1.micro"    : { "Arch" : "NATPV64"   },
       "t2.nano"     : { "Arch" : "NATHVM64"  },
@@ -161,8 +152,7 @@
       "hs1.8xlarge" : { "Arch" : "NATHVM64"  },
       "cr1.8xlarge" : { "Arch" : "NATHVM64"  },
       "cc2.8xlarge" : { "Arch" : "NATHVM64"  }
-    }
-,
+    },
     "AWSRegionArch2AMI" : {
       "us-east-1"        : {"PV64" : "ami-2a69aa47", "HVM64" : "ami-97785bed", "HVMG2" : "ami-0a6e3770"},
       "us-west-2"        : {"PV64" : "ami-7f77b31f", "HVM64" : "ami-f2d3638a", "HVMG2" : "ami-ee15a196"},
@@ -183,11 +173,8 @@
       "cn-north-1"       : {"PV64" : "ami-77559f1a", "HVM64" : "ami-cb19c4a6", "HVMG2" : "NOT_SUPPORTED"},
       "cn-northwest-1"   : {"PV64" : "ami-80707be2", "HVM64" : "ami-3e60745c", "HVMG2" : "NOT_SUPPORTED"}
     }
-
   },
-
   "Resources" : {
-
     "VPC" : {
       "Type" : "AWS::EC2::VPC",
       "Properties" : {
@@ -195,7 +182,6 @@
         "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
       }
     },
-
     "Subnet" : {
       "Type" : "AWS::EC2::Subnet",
       "Properties" : {
@@ -204,14 +190,12 @@
         "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
       }
     },
-
     "InternetGateway" : {
       "Type" : "AWS::EC2::InternetGateway",
       "Properties" : {
         "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
       }
     },
-
     "AttachGateway" : {
        "Type" : "AWS::EC2::VPCGatewayAttachment",
        "Properties" : {
@@ -219,7 +203,6 @@
          "InternetGatewayId" : { "Ref" : "InternetGateway" }
        }
     },
-
     "RouteTable" : {
       "Type" : "AWS::EC2::RouteTable",
       "Properties" : {
@@ -227,7 +210,6 @@
         "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
       }
     },
-
     "Route" : {
       "Type" : "AWS::EC2::Route",
       "DependsOn" : "AttachGateway",
@@ -237,7 +219,6 @@
         "GatewayId" : { "Ref" : "InternetGateway" }
       }
     },
-
     "SubnetRouteTableAssociation" : {
       "Type" : "AWS::EC2::SubnetRouteTableAssociation",
       "Properties" : {
@@ -245,7 +226,6 @@
         "RouteTableId" : { "Ref" : "RouteTable" }
       }
     },
-
     "NetworkAcl" : {
       "Type" : "AWS::EC2::NetworkAcl",
       "Properties" : {
@@ -253,7 +233,6 @@
         "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ]
       }
     },
-
     "InboundHTTPNetworkAclEntry" : {
       "Type" : "AWS::EC2::NetworkAclEntry",
       "Properties" : {
@@ -266,7 +245,6 @@
         "PortRange" : {"From" : "80", "To" : "80"}
       }
     },
-
     "InboundSSHNetworkAclEntry" : {
       "Type" : "AWS::EC2::NetworkAclEntry",
       "Properties" : {
@@ -279,7 +257,6 @@
         "PortRange" : {"From" : "22", "To" : "22"}
       }
     },
-
     "InboundResponsePortsNetworkAclEntry" : {
       "Type" : "AWS::EC2::NetworkAclEntry",
       "Properties" : {
@@ -292,7 +269,6 @@
         "PortRange" : {"From" : "1024", "To" : "65535"}
       }
     },
-
     "OutBoundHTTPNetworkAclEntry" : {
       "Type" : "AWS::EC2::NetworkAclEntry",
       "Properties" : {
@@ -305,7 +281,6 @@
         "PortRange" : {"From" : "80", "To" : "80"}
       }
     },
-
     "OutBoundHTTPSNetworkAclEntry" : {
       "Type" : "AWS::EC2::NetworkAclEntry",
       "Properties" : {
@@ -318,7 +293,6 @@
         "PortRange" : {"From" : "443", "To" : "443"}
       }
     },
-
     "OutBoundResponsePortsNetworkAclEntry" : {
       "Type" : "AWS::EC2::NetworkAclEntry",
       "Properties" : {
@@ -331,7 +305,6 @@
         "PortRange" : {"From" : "1024", "To" : "65535"}
       }
     },
-
     "SubnetNetworkAclAssociation" : {
       "Type" : "AWS::EC2::SubnetNetworkAclAssociation",
       "Properties" : {
@@ -339,7 +312,6 @@
         "NetworkAclId" : { "Ref" : "NetworkAcl" }
       }
     },
-
     "IPAddress" : {
       "Type" : "AWS::EC2::EIP",
       "DependsOn" : "AttachGateway",
@@ -348,7 +320,6 @@
         "InstanceId" : { "Ref" : "WebServerInstance" }
       }
     },
-
     "InstanceSecurityGroup" : {
       "Type" : "AWS::EC2::SecurityGroup",
       "Properties" : {
@@ -360,8 +331,6 @@
          ]
       }
     },
-
-
     "WebServerInstance" : {
       "Type" : "AWS::EC2::Instance",
       "DependsOn" : "AttachGateway",
@@ -374,7 +343,6 @@
                 "httpd"             : []
               }
             },
-
             "files" : {
               "/var/www/html/index.html" : {
                 "content" : { "Fn::Join" : ["\n", [
@@ -385,7 +353,6 @@
                 "owner"   : "root",
                 "group"   : "root"
               },
-
               "/etc/cfn/cfn-hup.conf" : {
                 "content" : { "Fn::Join" : ["", [
                   "[main]\n",
@@ -396,7 +363,6 @@
                 "owner"   : "root",
                 "group"   : "root"
               },
-
               "/etc/cfn/hooks.d/cfn-auto-reloader.conf" : {
                 "content": { "Fn::Join" : ["", [
                   "[cfn-auto-reloader-hook]\n",
@@ -413,7 +379,6 @@
                 "group"   : "root"
               }
             },
-
             "services" : {
               "sysvinit" : {
                 "httpd"    : { "enabled" : "true", "ensureRunning" : "true" },
@@ -425,8 +390,7 @@
         }
       },
       "Properties" : {
-        "ImageId" : { "Fn::FindInMap" : [ "AWSRegionArch2AMI", { "Ref" : "AWS::Region" },
-                          { "Fn::FindInMap" : [ "AWSInstanceType2Arch", { "Ref" : "InstanceType" }, "Arch" ] } ] },
+        "ImageId" : { "Fn::FindInMap" : [ "AWSRegionArch2AMI", { "Ref" : "AWS::Region" }, { "Fn::FindInMap" : [ "AWSInstanceType2Arch", { "Ref" : "InstanceType" }, "Arch" ] } ] },
         "InstanceType" : { "Ref" : "InstanceType" },
         "KeyName" : { "Ref" : "KeyName" },
         "Tags" : [ {"Key" : "Application", "Value" : { "Ref" : "AWS::StackId"} } ],
@@ -440,12 +404,10 @@
         "UserData"       : { "Fn::Base64" : { "Fn::Join" : ["", [
              "#!/bin/bash -xe\n",
              "yum update -y aws-cfn-bootstrap\n",
-
              "/opt/aws/bin/cfn-init -v ",
              "         --stack ", { "Ref" : "AWS::StackName" },
              "         --resource WebServerInstance ",
              "         --region ", { "Ref" : "AWS::Region" }, "\n",
-
              "/opt/aws/bin/cfn-signal -e $? ",
              "         --stack ", { "Ref" : "AWS::StackName" },
              "         --resource WebServerInstance ",
@@ -459,7 +421,6 @@
       }
     }
   },
-
   "Outputs" : {
     "URL" : {
       "Value" : { "Fn::Join" : [ "", ["http://", { "Fn::GetAtt" : ["WebServerInstance", "PublicIp"] }]]},
