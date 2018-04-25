@@ -26,7 +26,7 @@
   cloudformation:
       aws_access_key: ""
       aws_secret_key: ""
-      stack_name: "ansible-cloudformation-demo-01"
+      stack_name: "ansible-cloudformation-demo-02"
       state: present
       region: us-east-1
       template_body: "{{ lookup('template', 'single-instance-in-vpc.template.j2') }}"
@@ -35,4 +35,4 @@
         InstanceType: t2.small
         SSHLocation: "0.0.0.0/0"
       tags:
-        Stack: ansible-cloudformation-demo-01
+        Stack: ansible-cloudformation-demo-02
