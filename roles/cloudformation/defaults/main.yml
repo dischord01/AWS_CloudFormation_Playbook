@@ -1,0 +1,4 @@
+# file: roles/cloudformation/defaults/main.yml
+---
+#
+# foo: default

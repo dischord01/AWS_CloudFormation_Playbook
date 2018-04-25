@@ -1,0 +1,23 @@
+# file: roles/cloudformation/tasks/main.yml
+---
+- name: Get Facts on current CloudFormation templates
+  cloudformation_facts:
+      region: us-east-1
+      all_facts:      true # Get all stack information for the stack
+      stack_template: true # Get stack template body for the stack
+      stack_events:   true # Get stack events for the stack
+      
+
+- name: Deploy CloudFormation template
+  cloudformation:
+      stack_name: "ansible-cloudformation-demo-01"
+      state: present
+      region: us-east-1
+      template_body: "{{ lookup('template', 'single-instance-in-vpc.template.j2') }}"
+      template_parameters:
+        KeyName: workshop_key_1
+        DiskType: ephemeral
+        InstanceType: t2.small
+        Region2Examples: us-east-1
+      tags:
+        Stack: ansible-cloudformation-demo-01

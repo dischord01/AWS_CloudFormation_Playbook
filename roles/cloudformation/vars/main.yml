@@ -1,0 +1,4 @@
+# file: roles/cloudformation/vars/main.yml
+---
+#
+# foo: bar

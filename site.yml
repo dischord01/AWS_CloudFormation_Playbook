@@ -1,0 +1,7 @@
+# file: site.yml
+---
+- name: Install & Configure 
+  hosts: localhost
+  become: yes
+  roles:
+    - cloudformation
