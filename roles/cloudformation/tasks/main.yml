@@ -8,22 +8,31 @@
 #       stack_events:   true # Get stack events for the stack
       
 
-- name: Deploy CloudFormation template
+# - name: Deploy CloudFormation from file
+#   cloudformation:
+#       aws_access_key: ""
+#       aws_secret_key: ""
+#       stack_name: "ansible-cloudformation-demo-01"
+#       state: present
+#       region: us-east-1
+#       template_format: yaml
+#       template: "roles/cloudformation/files/vpc.yml"
+#       template_parameters:
+#           EnvironmentName: "From_File"
+#       tags:
+#         Stack: ansible-cloudformation-demo-01
+
+- name: Deploy CloudFormation Jinja template
   cloudformation:
       aws_access_key: ""
       aws_secret_key: ""
       stack_name: "ansible-cloudformation-demo-01"
       state: present
       region: us-east-1
-      template_format: yaml
-      template: "roles/cloudformation/files/vpc.yml"
-      # template_body: "{{ lookup('template', 'single-instance-in-vpc.template.j2') }}"
+      template_body: "{{ lookup('template', 'single-instance-in-vpc.template.j2') }}"
       template_parameters:
-          EnvironmentName: "Yo_mamma"
-      #   KeyName: workshop_key_1
-      #   DiskType: ephemeral
-      #   InstanceType: t2.small
-      #   Region2Examples: us-east-1
-      #   SSHLocation: "0.0.0.0/0"
+        KeyName: workshop_key_1
+        InstanceType: t2.small
+        SSHLocation: "0.0.0.0/0"
       tags:
         Stack: ansible-cloudformation-demo-01
