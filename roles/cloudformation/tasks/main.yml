@@ -21,5 +21,6 @@
         DiskType: ephemeral
         InstanceType: t2.small
         Region2Examples: us-east-1
+        SSHLocation: Default
       tags:
         Stack: ansible-cloudformation-demo-01
