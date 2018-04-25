@@ -18,7 +18,8 @@
       template_format: yaml
       template: "roles/cloudformation/files/vpc.yml"
       # template_body: "{{ lookup('template', 'single-instance-in-vpc.template.j2') }}"
-      # template_parameters:
+      template_parameters:
+          EnvironmentName: "Yo_mamma"
       #   KeyName: workshop_key_1
       #   DiskType: ephemeral
       #   InstanceType: t2.small
